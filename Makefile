@@ -10,3 +10,5 @@ lint:
 format:
 	go fmt ./...
 	${YARN_CMD} format
+
+.PHONY: build
