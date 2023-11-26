@@ -1,6 +1,6 @@
-module changeme
+module github.com/dchenz/wsl-desktop
 
-go 1.18
+go 1.21
 
 require github.com/wailsapp/wails/v2 v2.6.0
 
