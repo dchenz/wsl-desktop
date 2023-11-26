@@ -7,10 +7,10 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react";
-import { main } from "../../wailsjs/go/models";
+import { app } from "../../wailsjs/go/models";
 
 type DistroTableProps = {
-  items: main.Distro[];
+  items: app.Distro[];
 };
 
 const DistroTable = ({ items }: DistroTableProps) => {

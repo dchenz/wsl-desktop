@@ -1,4 +1,4 @@
-package main
+package app
 
 type Distro struct {
 	ID    string `json:"id"`

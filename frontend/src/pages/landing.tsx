@@ -1,11 +1,11 @@
 import { Box, Heading } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import { GetDistros } from "../../wailsjs/go/main/App";
-import { main } from "../../wailsjs/go/models";
+import { GetDistros } from "../../wailsjs/go/app/App";
+import { app } from "../../wailsjs/go/models";
 import DistroTable from "../components/DistroTable";
 
 const LandingPage: React.FC = () => {
-  const [distros, setDistros] = useState<main.Distro[]>([]);
+  const [distros, setDistros] = useState<app.Distro[]>([]);
 
   useEffect(() => {
     GetDistros().then(setDistros);
