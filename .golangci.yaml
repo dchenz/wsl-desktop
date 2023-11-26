@@ -1,0 +1,27 @@
+run:
+  timeout: 5m
+  modules-download-mode: readonly
+
+linters:
+  enable:
+    - errcheck
+    - goimports
+    - revive
+    - govet
+    - staticcheck
+    - lll
+    - unused
+    - gosimple
+
+linters-settings:
+  lll:
+    line-length: 100
+
+issues:
+  exclude-use-default: false
+  max-issues-per-linter: 0
+  max-same-issues: 0
+  exclude:
+    - "var-naming: .+ \\w*Id should be \\w*ID"
+    - "exported: .+ should have comment"
+    - "package-comments: should have a package comment"
