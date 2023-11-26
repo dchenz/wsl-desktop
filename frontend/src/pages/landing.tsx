@@ -4,7 +4,7 @@ import { GetDistros } from "../../wailsjs/go/app/App";
 import { app } from "../../wailsjs/go/models";
 import DistroTable from "../components/DistroTable";
 
-const LandingPage: React.FC = () => {
+const ListPage: React.FC = () => {
   const [distros, setDistros] = useState<app.Distro[]>([]);
 
   useEffect(() => {
@@ -19,4 +19,4 @@ const LandingPage: React.FC = () => {
   );
 };
 
-export default LandingPage;
+export default ListPage;
