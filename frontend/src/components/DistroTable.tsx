@@ -8,12 +8,16 @@ import {
   Tr,
 } from "@chakra-ui/react";
 import { app } from "../../wailsjs/go/models";
+import { useEffect, useState } from "react";
+import { GetDistros } from "../../wailsjs/go/app/App";
 
-type DistroTableProps = {
-  items: app.Distro[];
-};
+const DistroTable = () => {
+  const [distros, setDistros] = useState<app.Distro[]>([]);
 
-const DistroTable = ({ items }: DistroTableProps) => {
+  useEffect(() => {
+    GetDistros().then(setDistros);
+  }, []);
+
   return (
     <TableContainer>
       <Table variant="simple">
@@ -24,7 +28,7 @@ const DistroTable = ({ items }: DistroTableProps) => {
           </Tr>
         </Thead>
         <Tbody>
-          {items.map((item, i) => (
+          {distros.map((item, i) => (
             <Tr key={i}>
               <Td>{item.name}</Td>
               <Td>{item.state}</Td>
