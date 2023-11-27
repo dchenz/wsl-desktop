@@ -3,3 +3,5 @@
 import { app } from "../models";
 
 export function GetDistros(): Promise<Array<app.Distro>>;
+
+export function IsDockerDaemonRunning(): Promise<boolean>;

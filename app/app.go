@@ -2,13 +2,16 @@ package app
 
 import (
 	"context"
+	"fmt"
 
+	"github.com/docker/docker/client"
 	"github.com/ubuntu/gowsl"
 )
 
 // App struct
 type App struct {
-	ctx context.Context
+	ctx    context.Context
+	docker client.APIClient
 }
 
 // NewApp creates a new App application struct
@@ -20,6 +23,11 @@ func NewApp() *App {
 // so we can call the runtime methods
 func (a *App) Startup(ctx context.Context) {
 	a.ctx = ctx
+	dockerClient, err := client.NewClientWithOpts(client.FromEnv)
+	if err != nil {
+		fmt.Println(err)
+	}
+	a.docker = dockerClient
 }
 
 func (a *App) GetDistros() ([]Distro, error) {
@@ -44,4 +52,9 @@ func (a *App) GetDistros() ([]Distro, error) {
 		}
 	}
 	return results, nil
+}
+
+func (a *App) IsDockerDaemonRunning() bool {
+	_, err := a.docker.Ping(a.ctx)
+	return err == nil
 }

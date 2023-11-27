@@ -5,3 +5,7 @@
 export function GetDistros() {
   return window["go"]["app"]["App"]["GetDistros"]();
 }
+
+export function IsDockerDaemonRunning() {
+  return window["go"]["app"]["App"]["IsDockerDaemonRunning"]();
+}
