@@ -1,14 +1,10 @@
-import { Box, ChakraProvider } from "@chakra-ui/react";
-import DistroTable from "./components/DistroTable";
-import ActionToolbar from "./components/ActionToolbar";
+import { ChakraProvider } from "@chakra-ui/react";
+import HomePage from "./pages/HomePage";
 
 function App() {
   return (
     <ChakraProvider>
-      <Box p={3} height="100vh">
-        <ActionToolbar />
-        <DistroTable />
-      </Box>
+      <HomePage />
     </ChakraProvider>
   );
 }
