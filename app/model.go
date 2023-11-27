@@ -11,3 +11,9 @@ type CreateDistroFromImageRequest struct {
 	Repository string `json:"repository"`
 	Tag        string `json:"tag"`
 }
+
+type CreateDistroFromTarFileRequest struct {
+	DistroName string `json:"distroName"`
+	DistroPath string `json:"distroPath"`
+	TarPath    string `json:"path"`
+}

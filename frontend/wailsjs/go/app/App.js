@@ -6,10 +6,22 @@ export function CreateDistroFromDockerImage(arg1) {
   return window["go"]["app"]["App"]["CreateDistroFromDockerImage"](arg1);
 }
 
+export function CreateDistroFromTarFile(arg1) {
+  return window["go"]["app"]["App"]["CreateDistroFromTarFile"](arg1);
+}
+
 export function GetDistros() {
   return window["go"]["app"]["App"]["GetDistros"]();
 }
 
 export function IsDockerDaemonRunning() {
   return window["go"]["app"]["App"]["IsDockerDaemonRunning"]();
+}
+
+export function SelectFile() {
+  return window["go"]["app"]["App"]["SelectFile"]();
+}
+
+export function SelectFolder() {
+  return window["go"]["app"]["App"]["SelectFolder"]();
 }

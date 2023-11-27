@@ -3,6 +3,7 @@ import Layout from "../../components/Layout";
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/tabs";
 import DockerDaemonStatus from "../../components/DockerDaemonStatus";
 import FromImage from "./FromImage";
+import FromTarball from "./FromTarball";
 
 const DockerImportPage = () => {
   return (
@@ -21,6 +22,10 @@ const DockerImportPage = () => {
         <TabPanels>
           <TabPanel>
             <FromImage />
+          </TabPanel>
+          <TabPanel></TabPanel>
+          <TabPanel>
+            <FromTarball />
           </TabPanel>
         </TabPanels>
       </Tabs>

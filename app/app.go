@@ -2,10 +2,13 @@ package app
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
+	"os/exec"
 
 	"github.com/docker/docker/client"
 	"github.com/ubuntu/gowsl"
+	"github.com/wailsapp/wails/v2/pkg/runtime"
 )
 
 // App struct
@@ -59,6 +62,37 @@ func (a *App) IsDockerDaemonRunning() bool {
 	return err == nil
 }
 
-func (a *App) CreateDistroFromDockerImage(request CreateDistroFromImageRequest) error {
+func (a *App) CreateDistroFromDockerImage(_ CreateDistroFromImageRequest) error {
 	return nil
+}
+
+func (a *App) SelectFile() (string, error) {
+	path, err := runtime.OpenFileDialog(a.ctx, runtime.OpenDialogOptions{})
+	if err != nil {
+		return "", err
+	}
+	return path, nil
+}
+
+func (a *App) SelectFolder() (string, error) {
+	path, err := runtime.OpenDirectoryDialog(a.ctx, runtime.OpenDialogOptions{})
+	if err != nil {
+		return "", err
+	}
+	return path, nil
+}
+
+func (a *App) CreateDistroFromTarFile(request CreateDistroFromTarFileRequest) error {
+	// TODO: gowsl fails with an error
+	distroName, _ := json.Marshal(request.DistroName)
+	distroPath, _ := json.Marshal(request.DistroPath)
+	tarPath, _ := json.Marshal(request.TarPath)
+	wslCmd := fmt.Sprintf(`wsl.exe --import %s %s %s`,
+		string(distroName), string(distroPath), string(tarPath))
+	cmd := exec.Command("powershell", "-Command", wslCmd)
+	err := cmd.Run()
+	if err != nil {
+		fmt.Println(err)
+	}
+	return err
 }

@@ -15,6 +15,22 @@ export namespace app {
       this.tag = source["tag"];
     }
   }
+  export class CreateDistroFromTarFileRequest {
+    distroName: string;
+    distroPath: string;
+    path: string;
+
+    static createFrom(source: any = {}) {
+      return new CreateDistroFromTarFileRequest(source);
+    }
+
+    constructor(source: any = {}) {
+      if ("string" === typeof source) source = JSON.parse(source);
+      this.distroName = source["distroName"];
+      this.distroPath = source["distroPath"];
+      this.path = source["path"];
+    }
+  }
   export class Distro {
     id: string;
     name: string;

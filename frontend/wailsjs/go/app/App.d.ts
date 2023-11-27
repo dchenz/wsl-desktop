@@ -6,6 +6,14 @@ export function CreateDistroFromDockerImage(
   arg1: app.CreateDistroFromImageRequest
 ): Promise<void>;
 
+export function CreateDistroFromTarFile(
+  arg1: app.CreateDistroFromTarFileRequest
+): Promise<void>;
+
 export function GetDistros(): Promise<Array<app.Distro>>;
 
 export function IsDockerDaemonRunning(): Promise<boolean>;
+
+export function SelectFile(): Promise<string>;
+
+export function SelectFolder(): Promise<string>;
