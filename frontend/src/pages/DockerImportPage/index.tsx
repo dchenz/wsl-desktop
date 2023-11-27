@@ -1,7 +1,8 @@
 import { Box, HStack, Heading } from "@chakra-ui/layout";
-import Layout from "../components/Layout";
-import { Tab, TabList, TabPanels, Tabs } from "@chakra-ui/tabs";
-import DockerDaemonStatus from "../components/DockerDaemonStatus";
+import Layout from "../../components/Layout";
+import { Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/tabs";
+import DockerDaemonStatus from "../../components/DockerDaemonStatus";
+import FromImage from "./FromImage";
 
 const DockerImportPage = () => {
   return (
@@ -17,7 +18,11 @@ const DockerImportPage = () => {
           <Tab>From Container</Tab>
           <Tab>From Tarball</Tab>
         </TabList>
-        <TabPanels></TabPanels>
+        <TabPanels>
+          <TabPanel>
+            <FromImage />
+          </TabPanel>
+        </TabPanels>
       </Tabs>
     </Layout>
   );

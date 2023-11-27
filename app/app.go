@@ -58,3 +58,7 @@ func (a *App) IsDockerDaemonRunning() bool {
 	_, err := a.docker.Ping(a.ctx)
 	return err == nil
 }
+
+func (a *App) CreateDistroFromDockerImage(request CreateDistroFromImageRequest) error {
+	return nil
+}
