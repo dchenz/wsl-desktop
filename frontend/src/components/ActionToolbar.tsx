@@ -5,8 +5,8 @@ import { PAGES } from "../const";
 const ActionToolbar = () => {
   return (
     <HStack>
-      <Button as={Link} to={PAGES.dockerImport}>
-        Import from Docker
+      <Button as={Link} to={PAGES.importDistro}>
+        Import Distro
       </Button>
     </HStack>
   );

@@ -43,7 +43,7 @@ const FromTarball = () => {
         </InputGroup>
       </FormControl>
       <FormControl>
-        <FormLabel>Distro Mame</FormLabel>
+        <FormLabel>Distro Name</FormLabel>
         <Input
           value={distroName}
           onChange={(e) => setDistroName(e.target.value)}

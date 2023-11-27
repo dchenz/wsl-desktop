@@ -5,18 +5,18 @@ import DockerDaemonStatus from "../../components/DockerDaemonStatus";
 import FromImage from "./FromImage";
 import FromTarball from "./FromTarball";
 
-const DockerImportPage = () => {
+const ImportPage = () => {
   return (
     <Layout>
       <HStack>
-        <Heading size="sm">Import Distro with Docker</Heading>
+        <Heading size="sm">Import Distro</Heading>
         <Box flexGrow={1}></Box>
         <DockerDaemonStatus />
       </HStack>
       <Tabs>
         <TabList>
-          <Tab>From Image</Tab>
-          <Tab>From Container</Tab>
+          <Tab>From Docker Image</Tab>
+          <Tab>From Docker Container</Tab>
           <Tab>From Tarball</Tab>
         </TabList>
         <TabPanels>
@@ -33,4 +33,4 @@ const DockerImportPage = () => {
   );
 };
 
-export default DockerImportPage;
+export default ImportPage;

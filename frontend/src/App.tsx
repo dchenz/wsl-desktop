@@ -2,7 +2,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import HomePage from "./pages/HomePage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { PAGES } from "./const";
-import DockerImportPage from "./pages/DockerImportPage";
+import ImportPage from "./pages/ImportPage";
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path={PAGES.home} element={<HomePage />} />
-          <Route path={PAGES.dockerImport} element={<DockerImportPage />} />
+          <Route path={PAGES.importDistro} element={<ImportPage />} />
         </Routes>
       </BrowserRouter>
     </ChakraProvider>
