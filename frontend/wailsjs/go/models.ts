@@ -13,6 +13,22 @@ export namespace app {
       this.name = source["name"];
     }
   }
+  export class CreateDistroFromContainerRequest {
+    distroName: string;
+    distroPath: string;
+    containerId: string;
+
+    static createFrom(source: any = {}) {
+      return new CreateDistroFromContainerRequest(source);
+    }
+
+    constructor(source: any = {}) {
+      if ("string" === typeof source) source = JSON.parse(source);
+      this.distroName = source["distroName"];
+      this.distroPath = source["distroPath"];
+      this.containerId = source["containerId"];
+    }
+  }
   export class CreateDistroFromImageRequest {
     distroName: string;
     repository: string;

@@ -1,6 +1,9 @@
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import { CreateDistroFromDockerImage } from "../../../wailsjs/go/app/App";
+import {
+  CreateDistroFromDockerContainer,
+  CreateDistroFromDockerImage,
+} from "../../../wailsjs/go/app/App";
 import { app } from "../../../wailsjs/go/models";
 import DockerDaemonStatus from "../../components/DockerDaemonStatus";
 import Layout from "../../components/Layout";
@@ -24,6 +27,17 @@ const ImportDocker = () => {
     }
   };
 
+  const onDockerContainerSubmit = async (
+    values: app.CreateDistroFromContainerRequest
+  ) => {
+    try {
+      await CreateDistroFromDockerContainer(values);
+      navigate(PAGES.home);
+    } catch (e) {
+      reportError(e);
+    }
+  };
+
   return (
     <Layout headerContent={<DockerDaemonStatus />}>
       <Tabs>
@@ -36,7 +50,7 @@ const ImportDocker = () => {
             <ImportDockerImageForm onSubmit={onDockerImageSubmit} />
           </TabPanel>
           <TabPanel>
-            <ImportDockerContainerForm />
+            <ImportDockerContainerForm onSubmit={onDockerContainerSubmit} />
           </TabPanel>
         </TabPanels>
       </Tabs>

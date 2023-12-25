@@ -3,6 +3,8 @@ package app
 import (
 	"encoding/json"
 	"fmt"
+	"io"
+	"os"
 	"os/exec"
 
 	"github.com/ubuntu/gowsl"
@@ -38,6 +40,34 @@ func (a *App) GetDistros() ([]Distro, error) {
 
 func (a *App) CreateDistroFromDockerImage(_ CreateDistroFromImageRequest) error {
 	return nil
+}
+
+func (a *App) CreateDistroFromDockerContainer(request CreateDistroFromContainerRequest) error {
+	tarFile, err := a.docker.ContainerExport(a.ctx, request.ContainerID)
+	if err != nil {
+		runtime.LogErrorf(a.ctx, "Unable to export container: %s", err.Error())
+		return err
+	}
+	defer tarFile.Close()
+	tempFile, err := os.CreateTemp("", "dockerExport")
+	if err != nil {
+		runtime.LogErrorf(a.ctx, "Unable to create temporary file: %s", err.Error())
+		return err
+	}
+	if _, err := io.Copy(tempFile, tarFile); err != nil {
+		runtime.LogErrorf(a.ctx, "Unable to copy bytes: %s", err.Error())
+		return err
+	}
+	// File must be closed before WSL tries to import it.
+	if err := tempFile.Close(); err != nil {
+		runtime.LogErrorf(a.ctx, "Unable to close temporary file: %s", err.Error())
+		return err
+	}
+	return a.CreateDistroFromTarFile(CreateDistroFromTarFileRequest{
+		TarPath:    tempFile.Name(),
+		DistroName: request.DistroName,
+		DistroPath: request.DistroPath,
+	})
 }
 
 func (a *App) CreateDistroFromTarFile(request CreateDistroFromTarFileRequest) error {
