@@ -3,16 +3,16 @@ import { useNavigate } from "react-router-dom";
 import {
   CreateDistroFromDockerContainer,
   CreateDistroFromDockerImage,
-} from "../../../wailsjs/go/app/App";
-import { app } from "../../../wailsjs/go/models";
-import DockerDaemonStatus from "../../components/DockerDaemonStatus";
-import Layout from "../../components/Layout";
-import { useErrorToast } from "../../components/toast";
-import { PAGES } from "../../const";
-import ImportDockerContainerForm from "./ImportDockerContainerForm";
-import ImportDockerImageForm from "./ImportDockerImageForm";
+} from "../../wailsjs/go/app/App";
+import { app } from "../../wailsjs/go/models";
+import DockerDaemonStatus from "../components/DockerDaemonStatus";
+import ImportDockerContainerForm from "../components/Import/ImportDockerContainerForm";
+import ImportDockerImageForm from "../components/Import/ImportDockerImageForm";
+import Layout from "../components/Layout";
+import { useErrorToast } from "../components/toast";
+import { PAGES } from "../const";
 
-const ImportDocker = () => {
+const ImportFromDockerPage = () => {
   const reportError = useErrorToast();
   const navigate = useNavigate();
 
@@ -58,4 +58,4 @@ const ImportDocker = () => {
   );
 };
 
-export default ImportDocker;
+export default ImportFromDockerPage;

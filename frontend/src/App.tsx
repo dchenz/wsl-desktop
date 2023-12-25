@@ -3,7 +3,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { PAGES } from "./const";
 import HomePage from "./pages/HomePage";
-import { ImportDocker, ImportTarball } from "./pages/Import";
+import ImportFromDockerPage from "./pages/ImportFromDockerPage";
+import ImportFromTarballPage from "./pages/ImportFromTarballPage";
 
 const queryClient = new QueryClient();
 
@@ -14,8 +15,14 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path={PAGES.home} element={<HomePage />} />
-            <Route path={PAGES.importFromDocker} element={<ImportDocker />} />
-            <Route path={PAGES.importFromTarball} element={<ImportTarball />} />
+            <Route
+              path={PAGES.importFromDocker}
+              element={<ImportFromDockerPage />}
+            />
+            <Route
+              path={PAGES.importFromTarball}
+              element={<ImportFromTarballPage />}
+            />
           </Routes>
         </BrowserRouter>
       </ChakraProvider>

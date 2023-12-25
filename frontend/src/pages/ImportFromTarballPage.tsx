@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import { CreateDistroFromTarFile } from "../../../wailsjs/go/app/App";
-import { app } from "../../../wailsjs/go/models";
-import Layout from "../../components/Layout";
-import { useErrorToast } from "../../components/toast";
-import { PAGES } from "../../const";
-import ImportTarballForm from "./ImportTarballForm";
+import { CreateDistroFromTarFile } from "../../wailsjs/go/app/App";
+import { app } from "../../wailsjs/go/models";
+import ImportTarballForm from "../components/Import/ImportTarballForm";
+import Layout from "../components/Layout";
+import { useErrorToast } from "../components/toast";
+import { PAGES } from "../const";
 
-const ImportTarball = () => {
+const ImportFromTarballPage = () => {
   const reportError = useErrorToast();
   const navigate = useNavigate();
 
@@ -26,4 +26,4 @@ const ImportTarball = () => {
   );
 };
 
-export default ImportTarball;
+export default ImportFromTarballPage;
