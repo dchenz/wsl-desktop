@@ -1,4 +1,5 @@
 import {
+  Skeleton,
   Table,
   TableContainer,
   Tbody,
@@ -7,16 +8,14 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react";
-import { app } from "../../wailsjs/go/models";
-import { useEffect, useState } from "react";
-import { GetDistros } from "../../wailsjs/go/app/App";
+import { useDistros } from "../queries/wsl";
 
 const DistroTable = () => {
-  const [distros, setDistros] = useState<app.Distro[]>([]);
+  const { data: distros, isLoading } = useDistros();
 
-  useEffect(() => {
-    GetDistros().then(setDistros);
-  }, []);
+  if (isLoading || !distros) {
+    return <Skeleton height="100px" />;
+  }
 
   return (
     <TableContainer>
