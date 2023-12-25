@@ -4,11 +4,13 @@ import { Input } from "@chakra-ui/input";
 import { HStack, VStack } from "@chakra-ui/layout";
 import { FormEvent, useState } from "react";
 import { CreateDistroFromDockerImage } from "../../../wailsjs/go/app/App";
+import CommonDistroFields from "./CommonDistroFields";
 
 const ImportDockerImage = () => {
   const [repository, setRepository] = useState("");
   const [tag, setTag] = useState("latest");
   const [distroName, setDistroName] = useState("");
+  const [distroPath, setDistroPath] = useState("");
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -32,13 +34,12 @@ const ImportDockerImage = () => {
           />
         </HStack>
       </FormControl>
-      <FormControl>
-        <FormLabel>Distro Name</FormLabel>
-        <Input
-          value={distroName}
-          onChange={(e) => setDistroName(e.target.value)}
-        />
-      </FormControl>
+      <CommonDistroFields
+        distroName={distroName}
+        distroPath={distroPath}
+        setDistroName={setDistroName}
+        setDistroPath={setDistroPath}
+      />
       <Button type="submit">Submit</Button>
     </VStack>
   );

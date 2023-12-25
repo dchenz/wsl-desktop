@@ -1,7 +1,6 @@
 import {
   Button,
   FormControl,
-  FormLabel,
   Input,
   InputGroup,
   InputLeftAddon,
@@ -11,8 +10,8 @@ import { FormEvent, useState } from "react";
 import {
   CreateDistroFromTarFile,
   SelectFile,
-  SelectFolder,
 } from "../../../wailsjs/go/app/App";
+import CommonDistroFields from "./CommonDistroFields";
 
 const ImportTarball = () => {
   const [path, setPath] = useState("");
@@ -42,28 +41,12 @@ const ImportTarball = () => {
           <Input value={path} isReadOnly={true} />
         </InputGroup>
       </FormControl>
-      <FormControl>
-        <FormLabel>Distro Name</FormLabel>
-        <Input
-          value={distroName}
-          onChange={(e) => setDistroName(e.target.value)}
-        />
-      </FormControl>
-      <FormControl>
-        <FormLabel></FormLabel>
-        <InputGroup>
-          <InputLeftAddon>
-            <Button
-              onClick={() => {
-                SelectFolder().then(setDistroPath);
-              }}
-            >
-              Distro Location
-            </Button>
-          </InputLeftAddon>
-          <Input value={distroPath} isReadOnly={true} />
-        </InputGroup>
-      </FormControl>
+      <CommonDistroFields
+        distroName={distroName}
+        distroPath={distroPath}
+        setDistroName={setDistroName}
+        setDistroPath={setDistroPath}
+      />
       <Button type="submit">Submit</Button>
     </VStack>
   );
