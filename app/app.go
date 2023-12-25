@@ -2,9 +2,9 @@ package app
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/docker/docker/client"
+	"github.com/wailsapp/wails/v2/pkg/runtime"
 )
 
 // App struct
@@ -22,9 +22,10 @@ func NewApp() *App {
 // so we can call the runtime methods
 func (a *App) Startup(ctx context.Context) {
 	a.ctx = ctx
+
 	dockerClient, err := client.NewClientWithOpts(client.FromEnv)
 	if err != nil {
-		fmt.Println(err)
+		runtime.LogErrorf(a.ctx, "Unable to create docker client: %s", err.Error())
 	}
 	a.docker = dockerClient
 }
