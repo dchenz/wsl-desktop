@@ -4,6 +4,7 @@ import { Input } from "@chakra-ui/input";
 import { HStack, VStack } from "@chakra-ui/layout";
 import { FormEvent, useState } from "react";
 import { CreateDistroFromDockerImage } from "../../../wailsjs/go/app/App";
+import Layout from "../../components/Layout";
 import CommonDistroFields from "./CommonDistroFields";
 
 const ImportDockerImage = () => {
@@ -18,30 +19,32 @@ const ImportDockerImage = () => {
   };
 
   return (
-    <VStack as="form" onSubmit={onSubmit}>
-      <FormControl>
-        <FormLabel>Image</FormLabel>
-        <HStack>
-          <Input
-            placeholder="Ex: ubuntu"
-            value={repository}
-            onChange={(e) => setRepository(e.target.value)}
-          />
-          <Input
-            placeholder="Ex: latest"
-            value={tag}
-            onChange={(e) => setTag(e.target.value)}
-          />
-        </HStack>
-      </FormControl>
-      <CommonDistroFields
-        distroName={distroName}
-        distroPath={distroPath}
-        setDistroName={setDistroName}
-        setDistroPath={setDistroPath}
-      />
-      <Button type="submit">Submit</Button>
-    </VStack>
+    <Layout>
+      <VStack as="form" onSubmit={onSubmit}>
+        <FormControl>
+          <FormLabel>Image</FormLabel>
+          <HStack>
+            <Input
+              placeholder="Ex: ubuntu"
+              value={repository}
+              onChange={(e) => setRepository(e.target.value)}
+            />
+            <Input
+              placeholder="Ex: latest"
+              value={tag}
+              onChange={(e) => setTag(e.target.value)}
+            />
+          </HStack>
+        </FormControl>
+        <CommonDistroFields
+          distroName={distroName}
+          distroPath={distroPath}
+          setDistroName={setDistroName}
+          setDistroPath={setDistroPath}
+        />
+        <Button type="submit">Submit</Button>
+      </VStack>
+    </Layout>
   );
 };
 

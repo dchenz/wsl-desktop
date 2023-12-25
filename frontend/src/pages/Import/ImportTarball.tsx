@@ -11,6 +11,7 @@ import {
   CreateDistroFromTarFile,
   SelectFile,
 } from "../../../wailsjs/go/app/App";
+import Layout from "../../components/Layout";
 import CommonDistroFields from "./CommonDistroFields";
 
 const ImportTarball = () => {
@@ -30,23 +31,25 @@ const ImportTarball = () => {
   };
 
   return (
-    <VStack as="form" onSubmit={onSubmit}>
-      <FormControl>
-        <InputGroup>
-          <InputLeftAddon>
-            <Button onClick={onFileSelectorClick}>Select file</Button>
-          </InputLeftAddon>
-          <Input value={path} isReadOnly={true} />
-        </InputGroup>
-      </FormControl>
-      <CommonDistroFields
-        distroName={distroName}
-        distroPath={distroPath}
-        setDistroName={setDistroName}
-        setDistroPath={setDistroPath}
-      />
-      <Button type="submit">Submit</Button>
-    </VStack>
+    <Layout>
+      <VStack as="form" onSubmit={onSubmit}>
+        <FormControl>
+          <InputGroup>
+            <InputLeftAddon>
+              <Button onClick={onFileSelectorClick}>Select file</Button>
+            </InputLeftAddon>
+            <Input value={path} isReadOnly={true} />
+          </InputGroup>
+        </FormControl>
+        <CommonDistroFields
+          distroName={distroName}
+          distroPath={distroPath}
+          setDistroName={setDistroName}
+          setDistroPath={setDistroPath}
+        />
+        <Button type="submit">Submit</Button>
+      </VStack>
+    </Layout>
   );
 };
 
