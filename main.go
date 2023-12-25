@@ -30,7 +30,9 @@ func main() {
 		Bind: []interface{}{
 			appInstance,
 		},
-		Logger: logger.NewDefaultLogger(),
+		Logger:             logger.NewDefaultLogger(),
+		LogLevel:           logger.DEBUG,
+		LogLevelProduction: logger.ERROR,
 	})
 
 	if err != nil {
