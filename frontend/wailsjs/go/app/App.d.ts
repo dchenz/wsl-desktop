@@ -12,6 +12,8 @@ export function CreateDistroFromTarFile(
 
 export function GetDistros(): Promise<Array<app.Distro>>;
 
+export function GetDockerContainers(): Promise<Array<app.Container>>;
+
 export function IsDockerDaemonRunning(): Promise<boolean>;
 
 export function SelectFile(): Promise<string>;

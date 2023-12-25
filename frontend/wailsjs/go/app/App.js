@@ -14,6 +14,10 @@ export function GetDistros() {
   return window["go"]["app"]["App"]["GetDistros"]();
 }
 
+export function GetDockerContainers() {
+  return window["go"]["app"]["App"]["GetDockerContainers"]();
+}
+
 export function IsDockerDaemonRunning() {
   return window["go"]["app"]["App"]["IsDockerDaemonRunning"]();
 }
