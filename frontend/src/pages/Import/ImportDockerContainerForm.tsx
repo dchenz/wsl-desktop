@@ -6,9 +6,9 @@ import {
   Select,
   VStack,
 } from "@chakra-ui/react";
-import { FormEvent, useEffect, useState } from "react";
-import { GetDockerContainers } from "../../../wailsjs/go/app/App";
+import { FormEvent, useState } from "react";
 import { app } from "../../../wailsjs/go/models";
+import { useDockerContainers } from "../../queries/docker";
 import CommonDistroFields from "./CommonDistroFields";
 
 type ImportDockerContainerFormProps = {
@@ -18,16 +18,13 @@ type ImportDockerContainerFormProps = {
 const ImportDockerContainerForm = ({
   onSubmit,
 }: ImportDockerContainerFormProps) => {
-  const [containers, setContainers] = useState<app.Container[]>([]);
+  const { data: containers, isLoading: isLoadingContainers } =
+    useDockerContainers();
   const [distroName, setDistroName] = useState("");
   const [distroPath, setDistroPath] = useState("");
   const [selectedContainerId, setSelectedContainerId] = useState<string | null>(
     null
   );
-
-  useEffect(() => {
-    GetDockerContainers().then(setContainers);
-  }, []);
 
   const onFormSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -43,8 +40,9 @@ const ImportDockerContainerForm = ({
         <Select
           placeholder="Select a container"
           onChange={(e) => setSelectedContainerId(e.target.value)}
+          disabled={isLoadingContainers}
         >
-          {containers.map(({ id, name }, index) => (
+          {containers?.map(({ id, name }, index) => (
             <option key={index} value={id}>
               {name}
             </option>
