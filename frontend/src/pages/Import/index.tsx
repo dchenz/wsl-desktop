@@ -1,4 +1,4 @@
-import ImportDockerImage from "./ImportDockerImage";
+import ImportDocker from "./ImportDocker";
 import ImportTarball from "./ImportTarball";
 
-export { ImportDockerImage, ImportTarball };
+export { ImportDocker, ImportTarball };

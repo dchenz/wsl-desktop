@@ -1,3 +1,4 @@
+import { Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { CreateDistroFromDockerImage } from "../../../wailsjs/go/app/App";
 import { app } from "../../../wailsjs/go/models";
@@ -5,13 +6,16 @@ import DockerDaemonStatus from "../../components/DockerDaemonStatus";
 import Layout from "../../components/Layout";
 import { useErrorToast } from "../../components/toast";
 import { PAGES } from "../../const";
+import ImportDockerContainerForm from "./ImportDockerContainerForm";
 import ImportDockerImageForm from "./ImportDockerImageForm";
 
-const ImportDockerImage = () => {
+const ImportDocker = () => {
   const reportError = useErrorToast();
   const navigate = useNavigate();
 
-  const onSubmit = async (values: app.CreateDistroFromImageRequest) => {
+  const onDockerImageSubmit = async (
+    values: app.CreateDistroFromImageRequest
+  ) => {
     try {
       await CreateDistroFromDockerImage(values);
       navigate(PAGES.home);
@@ -22,9 +26,22 @@ const ImportDockerImage = () => {
 
   return (
     <Layout headerContent={<DockerDaemonStatus />}>
-      <ImportDockerImageForm onSubmit={onSubmit} />
+      <Tabs>
+        <TabList>
+          <Tab>From Image</Tab>
+          <Tab>From Container</Tab>
+        </TabList>
+        <TabPanels>
+          <TabPanel>
+            <ImportDockerImageForm onSubmit={onDockerImageSubmit} />
+          </TabPanel>
+          <TabPanel>
+            <ImportDockerContainerForm />
+          </TabPanel>
+        </TabPanels>
+      </Tabs>
     </Layout>
   );
 };
 
-export default ImportDockerImage;
+export default ImportDocker;
