@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { CreateDistroFromDockerImage } from "../../../wailsjs/go/app/App";
 import { app } from "../../../wailsjs/go/models";
+import DockerDaemonStatus from "../../components/DockerDaemonStatus";
 import Layout from "../../components/Layout";
 import { useErrorToast } from "../../components/toast";
 import { PAGES } from "../../const";
@@ -20,7 +21,7 @@ const ImportDockerImage = () => {
   };
 
   return (
-    <Layout>
+    <Layout headerContent={<DockerDaemonStatus />}>
       <ImportDockerImageForm onSubmit={onSubmit} />
     </Layout>
   );

@@ -11,7 +11,7 @@ const DockerDaemonStatus = () => {
 
   return (
     <Badge colorScheme={isRunning ? "green" : "red"}>
-      {isRunning ? "RUNNING" : "NOT RUNNING"}
+      {isRunning ? "DAEMON RUNNING" : "DAEMON NOT RUNNING"}
     </Badge>
   );
 };
