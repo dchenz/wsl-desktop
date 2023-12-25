@@ -1,11 +1,11 @@
+import { Button } from "@chakra-ui/button";
 import { FormControl, FormLabel } from "@chakra-ui/form-control";
 import { Input } from "@chakra-ui/input";
 import { HStack, VStack } from "@chakra-ui/layout";
 import { FormEvent, useState } from "react";
 import { CreateDistroFromDockerImage } from "../../../wailsjs/go/app/App";
-import { Button } from "@chakra-ui/button";
 
-const FromImage = () => {
+const ImportDockerImage = () => {
   const [repository, setRepository] = useState("");
   const [tag, setTag] = useState("latest");
   const [distroName, setDistroName] = useState("");
@@ -44,4 +44,4 @@ const FromImage = () => {
   );
 };
 
-export default FromImage;
+export default ImportDockerImage;

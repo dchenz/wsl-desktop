@@ -14,7 +14,7 @@ import {
   SelectFolder,
 } from "../../../wailsjs/go/app/App";
 
-const FromTarball = () => {
+const ImportTarball = () => {
   const [path, setPath] = useState("");
   const [distroName, setDistroName] = useState("");
   const [distroPath, setDistroPath] = useState("");
@@ -69,4 +69,4 @@ const FromTarball = () => {
   );
 };
 
-export default FromTarball;
+export default ImportTarball;

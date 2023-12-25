@@ -1,4 +1,5 @@
 export const PAGES = {
   home: "/",
-  importDistro: "/import",
+  importFromDocker: "/import/docker",
+  importFromTarball: "/import/tarball",
 };
