@@ -9,10 +9,10 @@ type LayoutProps = {
 const Layout = ({ children }: LayoutProps) => {
   return (
     <Box p={3} height="100vh">
-      <HStack mb={2}>
+      <HStack>
         <BackButton />
       </HStack>
-      {children}
+      <Box p={3}>{children}</Box>
     </Box>
   );
 };

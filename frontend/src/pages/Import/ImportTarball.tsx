@@ -1,5 +1,6 @@
 import {
   Button,
+  Divider,
   FormControl,
   Input,
   InputGroup,
@@ -32,7 +33,7 @@ const ImportTarball = () => {
 
   return (
     <Layout>
-      <VStack as="form" onSubmit={onSubmit}>
+      <VStack as="form" gap={5} onSubmit={onSubmit}>
         <FormControl>
           <InputGroup>
             <InputLeftAddon>
@@ -41,6 +42,7 @@ const ImportTarball = () => {
             <Input value={path} isReadOnly={true} />
           </InputGroup>
         </FormControl>
+        <Divider />
         <CommonDistroFields
           distroName={distroName}
           distroPath={distroPath}

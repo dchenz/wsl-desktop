@@ -12,7 +12,7 @@ import { PAGES } from "../const";
 
 const ActionToolbar = () => {
   return (
-    <HStack>
+    <HStack mb={2}>
       <Menu>
         <MenuButton as={Button} rightIcon={<ChevronDown />}>
           Import

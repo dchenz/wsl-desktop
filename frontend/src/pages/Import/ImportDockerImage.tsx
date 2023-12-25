@@ -2,6 +2,7 @@ import { Button } from "@chakra-ui/button";
 import { FormControl, FormLabel } from "@chakra-ui/form-control";
 import { Input } from "@chakra-ui/input";
 import { HStack, VStack } from "@chakra-ui/layout";
+import { Divider } from "@chakra-ui/react";
 import { FormEvent, useState } from "react";
 import { CreateDistroFromDockerImage } from "../../../wailsjs/go/app/App";
 import Layout from "../../components/Layout";
@@ -20,7 +21,7 @@ const ImportDockerImage = () => {
 
   return (
     <Layout>
-      <VStack as="form" onSubmit={onSubmit}>
+      <VStack as="form" gap={5} onSubmit={onSubmit}>
         <FormControl>
           <FormLabel>Image</FormLabel>
           <HStack>
@@ -36,6 +37,7 @@ const ImportDockerImage = () => {
             />
           </HStack>
         </FormControl>
+        <Divider />
         <CommonDistroFields
           distroName={distroName}
           distroPath={distroPath}
