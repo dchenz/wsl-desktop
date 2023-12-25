@@ -25,18 +25,16 @@ const ImportTarball = () => {
     );
   };
 
+  const onFileSelectorClick = async () => {
+    setPath(await SelectFile());
+  };
+
   return (
     <VStack as="form" onSubmit={onSubmit}>
       <FormControl>
         <InputGroup>
           <InputLeftAddon>
-            <Button
-              onClick={() => {
-                SelectFile().then(setPath);
-              }}
-            >
-              File
-            </Button>
+            <Button onClick={onFileSelectorClick}>Select file</Button>
           </InputLeftAddon>
           <Input value={path} isReadOnly={true} />
         </InputGroup>

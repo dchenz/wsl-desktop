@@ -35,10 +35,10 @@ const CommonDistroFields = ({
         />
       </FormControl>
       <FormControl>
-        <FormLabel></FormLabel>
+        <FormLabel>Distro Location</FormLabel>
         <InputGroup>
           <InputLeftAddon>
-            <Button onClick={onFolderSelectorClick}>Distro Location</Button>
+            <Button onClick={onFolderSelectorClick}>Select folder</Button>
           </InputLeftAddon>
           <Input value={distroPath} isReadOnly={true} />
         </InputGroup>
