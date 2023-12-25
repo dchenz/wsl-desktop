@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"io"
 	"os"
-	"os/exec"
 
 	"github.com/ubuntu/gowsl"
 	"github.com/wailsapp/wails/v2/pkg/runtime"
@@ -76,13 +75,6 @@ func (a *App) CreateDistroFromTarFile(request CreateDistroFromTarFileRequest) er
 	distroPath, _ := json.Marshal(request.DistroPath)
 	tarPath, _ := json.Marshal(request.TarPath)
 
-	wslCmd := fmt.Sprintf(`wsl.exe --import %s %s %s`,
-		string(distroName), string(distroPath), string(tarPath))
-	runtime.LogDebug(a.ctx, wslCmd)
-
-	err := exec.Command("powershell", "-Command", wslCmd).Run()
-	if err != nil {
-		runtime.LogErrorf(a.ctx, "Unable to execute command: %s", err.Error())
-	}
-	return err
+	return a.runCommand(fmt.Sprintf(`wsl.exe --import %s %s %s`,
+		string(distroName), string(distroPath), string(tarPath)))
 }
