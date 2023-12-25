@@ -13,18 +13,22 @@ import {
   SelectFile,
 } from "../../../wailsjs/go/app/App";
 import Layout from "../../components/Layout";
+import { useErrorToast } from "../../components/toast";
 import CommonDistroFields from "./CommonDistroFields";
 
 const ImportTarball = () => {
+  const reportError = useErrorToast();
   const [path, setPath] = useState("");
   const [distroName, setDistroName] = useState("");
   const [distroPath, setDistroPath] = useState("");
 
-  const onSubmit = (e: FormEvent) => {
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    CreateDistroFromTarFile({ distroName, distroPath, path }).catch(
-      console.error
-    );
+    try {
+      await CreateDistroFromTarFile({ distroName, distroPath, path });
+    } catch (e) {
+      reportError(e);
+    }
   };
 
   const onFileSelectorClick = async () => {

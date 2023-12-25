@@ -6,17 +6,23 @@ import { Divider } from "@chakra-ui/react";
 import { FormEvent, useState } from "react";
 import { CreateDistroFromDockerImage } from "../../../wailsjs/go/app/App";
 import Layout from "../../components/Layout";
+import { useErrorToast } from "../../components/toast";
 import CommonDistroFields from "./CommonDistroFields";
 
 const ImportDockerImage = () => {
+  const reportError = useErrorToast();
   const [repository, setRepository] = useState("");
   const [tag, setTag] = useState("latest");
   const [distroName, setDistroName] = useState("");
   const [distroPath, setDistroPath] = useState("");
 
-  const onSubmit = (e: FormEvent) => {
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    CreateDistroFromDockerImage({ repository, tag, distroName });
+    try {
+      await CreateDistroFromDockerImage({ repository, tag, distroName });
+    } catch (e) {
+      reportError(e);
+    }
   };
 
   return (
