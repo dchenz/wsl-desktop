@@ -2,6 +2,7 @@ export namespace app {
   export class Container {
     id: string;
     name: string;
+    image: string;
 
     static createFrom(source: any = {}) {
       return new Container(source);
@@ -11,6 +12,7 @@ export namespace app {
       if ("string" === typeof source) source = JSON.parse(source);
       this.id = source["id"];
       this.name = source["name"];
+      this.image = source["image"];
     }
   }
   export class CreateDistroFromContainerRequest {

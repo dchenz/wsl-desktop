@@ -24,8 +24,9 @@ func (a *App) GetDockerContainers() ([]Container, error) {
 	results := make([]Container, len(containers))
 	for i, container := range containers {
 		results[i] = Container{
-			ID:   container.ID,
-			Name: strings.Join(container.Names, ","),
+			ID:    container.ID,
+			Name:  strings.Join(container.Names, ","),
+			Image: container.Image,
 		}
 	}
 	return results, nil

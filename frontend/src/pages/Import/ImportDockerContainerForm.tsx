@@ -4,7 +4,7 @@ import {
   FormControl,
   FormLabel,
   Select,
-  VStack,
+  VStack
 } from "@chakra-ui/react";
 import { FormEvent, useState } from "react";
 import { app } from "../../../wailsjs/go/models";
@@ -42,9 +42,9 @@ const ImportDockerContainerForm = ({
           onChange={(e) => setSelectedContainerId(e.target.value)}
           disabled={isLoadingContainers}
         >
-          {containers?.map(({ id, name }, index) => (
+          {containers?.map(({ id, name, image }, index) => (
             <option key={index} value={id}>
-              {name}
+              {name} ({image})
             </option>
           ))}
         </Select>

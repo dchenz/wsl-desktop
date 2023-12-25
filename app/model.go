@@ -25,6 +25,7 @@ type CreateDistroFromTarFileRequest struct {
 }
 
 type Container struct {
-	ID   string `json:"id"`
-	Name string `json:"name"`
+	ID    string `json:"id"`
+	Name  string `json:"name"`
+	Image string `json:"image"`
 }
